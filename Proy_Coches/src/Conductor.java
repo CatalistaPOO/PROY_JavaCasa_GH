@@ -1,4 +1,5 @@
 import com.objetos.Coche;
+import com.objetos.Deportivo;
 import com.objetos.Coche.marcaCoches;
 
 public class Conductor {
@@ -27,7 +28,35 @@ public class Conductor {
         // Tendrá lo mismo que un Coche y además un método llamado turbo() que incrementará la velocidad en 40.
         // Acelerará de 50 en 50 y no podremos superar la velocidad máxima.(350 máximo)
 
+
+        // ACCIONES COCHE
         Coche coche = new Coche(); 
-        System.out.println(coche.getMarca());
+        System.out.println(coche.toString());
+        // try {
+            coche.acelerar();
+        // } catch (Exception e) {
+        //     System.out.println("ERROR:Arranca el coche o no acelerarás");
+        // }
+        coche.arrancar(true);
+        coche.acelerar();
+        coche.acelerar();
+        coche.frenar();
+        
+       
+
+        // ACCIONES DEPORTIVO
+        // Deportivo deportivo = new Deportivo();
+        // System.out.println(deportivo.toString());
+        // deportivo.arrancar(true);
+        //  try {
+        //     deportivo.acelerar();
+        // } catch (Exception e) {
+        //     System.out.println("ERROR:Arranca el coche o no acelerarás");
+        // }
+        // deportivo.acelerar();
+        // System.out.println(deportivo.toString());
+        // deportivo.turbo();
+        // deportivo.acelerar();
+        // System.out.println(deportivo.toString());
     }
 }

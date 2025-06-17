@@ -4,16 +4,20 @@ public class Coche {
     //PPROPIEDADES
     private String modelo;
     private int velocidad;
-    protected int velocidadMaxima;
+    private int velocidadMaxima;
     public enum marcaCoches {FERRARI, PORSCHE, SEAT, BMW};
     private marcaCoches marca;
     private boolean arrancado;
+    private int sumaRestaVelocidad;
 
     //CONSTRUCTOR
     public Coche(){
-        velocidad = 0;
-        velocidadMaxima = 120;
-        
+        setVelocidad(0);
+        setVelocidadMaxima(120);
+        setArrancado(false);
+        setMarca(marcaCoches.SEAT);
+        setModelo("León");
+        setSumaRestaVelocidad(10);
     }
 
 
@@ -46,22 +50,40 @@ public class Coche {
         this.velocidadMaxima = velocidadMaxima;
     }
 
-    //METODOS DE CLASE
-    public void arrancar(){
-        arrancado = true;
-        if (arrancado == true) {
+    public boolean getArrancado(){
+        return this.arrancado;
+    }
+     protected void setArrancado(boolean arrancado) {
+        this.arrancado = arrancado;
+    }
+
+    public int getSumaRestaVelocidad() {
+        return this.sumaRestaVelocidad;
+    }
+    public void setSumaRestaVelocidad(int sumaRestaVelocidad) {
+        this.sumaRestaVelocidad = sumaRestaVelocidad;
+    }
+    
+
+    //METODOS PROPIOS
+    public void arrancar(boolean onOff){
+
+        if (onOff == true) {
+            setArrancado(true);
             System.out.println("Motor encendido!!");
         }
         else{
-            System.out.println("El coche ya está arrancad");
+            setArrancado(false);
+            System.out.println("Motor apagado...");
+            setVelocidad(0);
         }
     }
 
     public void frenar(){
         if (arrancado == true || velocidad == 0){
-            int freno = velocidad -10;
+            int freno = velocidad - sumaRestaVelocidad;
             this.velocidad -= freno;
-            System.out.println("Velocidad: " + this.velocidad);
+            System.out.println("Velocidad:" + this.velocidad);
         }
         else{
             System.out.println("no frenarás con el coche parado o sin arrancar");
@@ -69,26 +91,32 @@ public class Coche {
     }
     
     public void frenar(boolean para){
-        if (arrancado == true || velocidad == 0){
-        this.velocidad = 0;
-        System.out.println("Parada en seco!! tu velocidad es: " + this.velocidad);
+        if (velocidad > sumaRestaVelocidad){
+        setVelocidad(0);
+        System.out.println("Parada en seco!! tu velocidad es:" + getVelocidad());
         }
         else{
-            System.out.println("no frenarás con el coche parado o sin arrancar");
+            System.out.println("no frenarás con el coche parado...");
         }
     }
 
     public void acelerar()throws Exception{
-        if ( velocidad == 0 && velocidad != velocidadMaxima -10){
-                // Exception a(){
-                //      System.out.println("El coche está parado, no se puede");
-                // }
+        if ( this.arrancado == false) {
+                System.out.println("No has arrancado");
+            }
+            else if (velocidad > velocidadMaxima - sumaRestaVelocidad -1){
+            System.out.println("No pises tanto el acelerador que pasas la velocidad máxima del coche");
         }
         else{
-            velocidad += 10;
-            System.out.println("Velocidad: " + velocidad);
+            setVelocidad(getVelocidad() + sumaRestaVelocidad);
+            System.out.println("Velocidad: " + getVelocidad());
         }
     }
 
+     // Sobrescribimos el método toString() para poder mostrar la marca, modelo y velocidad actual del Coche
+    @Override
+    public String toString() {
+        return ("Marca:" + this.marca + " Modelo:" + this.modelo + " Velocidad:" + this.velocidad);
+    }
 
 }  
