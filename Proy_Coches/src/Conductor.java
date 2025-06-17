@@ -4,6 +4,7 @@ import com.objetos.Coche.marcaCoches;
 
 public class Conductor {
     public static void main(String[] args) throws Exception {
+        //-----------------------------------------------------------------------------------------------------
         // Vamos a realizar una aplicación que se encargará de utilizar vehículos.
         // Tendremos dos clases: Coche y Deportivo.
 
@@ -27,36 +28,39 @@ public class Conductor {
         // Deportivo:
         // Tendrá lo mismo que un Coche y además un método llamado turbo() que incrementará la velocidad en 40.
         // Acelerará de 50 en 50 y no podremos superar la velocidad máxima.(350 máximo)
-
+        //-----------------------------------------------------------------------------------------------------
 
         // ACCIONES COCHE
+        System.out.println("ACCIONES COCHE:");
         Coche coche = new Coche(); 
         System.out.println(coche.toString());
-        // try {
+        try {
             coche.acelerar();
-        // } catch (Exception e) {
-        //     System.out.println("ERROR:Arranca el coche o no acelerarás");
-        // }
+        } catch (Exception e) {
+            System.out.println("ERROR:Arranca el coche o no acelerarás");
+        }
         coche.arrancar(true);
         coche.acelerar();
         coche.acelerar();
-        coche.frenar();
+        coche.frenar(false);
+        System.out.println("-----------------------------------------");
         
-       
-
         // ACCIONES DEPORTIVO
-        // Deportivo deportivo = new Deportivo();
-        // System.out.println(deportivo.toString());
-        // deportivo.arrancar(true);
-        //  try {
-        //     deportivo.acelerar();
-        // } catch (Exception e) {
-        //     System.out.println("ERROR:Arranca el coche o no acelerarás");
-        // }
-        // deportivo.acelerar();
-        // System.out.println(deportivo.toString());
-        // deportivo.turbo();
-        // deportivo.acelerar();
-        // System.out.println(deportivo.toString());
+        System.out.println("ACCIONES DEPORTIVO");
+        Deportivo deportivo = new Deportivo();
+        System.out.println(deportivo.toString());
+        try {
+            deportivo.acelerar();
+        } catch (Exception e) {
+            System.out.println("ERROR:Arranca el coche o no acelerarás");
+        }
+        deportivo.arrancar(true);
+        deportivo.acelerar();
+        deportivo.turbo(true);
+        deportivo.acelerar();
+        deportivo.turbo(false);
+        deportivo.acelerar();
+        deportivo.frenar(true);
+        System.out.println("-----------------------------------------");
     }
 }

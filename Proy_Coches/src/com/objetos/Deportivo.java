@@ -6,6 +6,7 @@ public class Deportivo extends Coche{
     private int velocidadMaximaDeportivo = 350;
     private int acelerarDeportivo = getSumaRestaVelocidad() + 40; 
     private int turbo = 40;
+    private boolean isTurboActive;
 
     //SETTERS GETTERS
     @Override
@@ -14,7 +15,28 @@ public class Deportivo extends Coche{
     }
     @Override
     protected void setVelocidadMaxima(int velocidadMaxima){
-        velocidadMaxima =  velocidadMaximaDeportivo;
+        velocidadMaxima = velocidadMaximaDeportivo;
+    }
+
+    public int getAcelerarDeportivo() {
+        return acelerarDeportivo;
+    }
+    public void setAcelerarDeportivo(int acelerarDeportivo) {
+        this.acelerarDeportivo = acelerarDeportivo;
+    }
+
+     public boolean getIsTurboActive() {
+        return this.isTurboActive;
+    }
+    public void setIsTurboActive(boolean isTurboActive) {
+        this.isTurboActive = isTurboActive;
+    }
+
+    public int getTurbo() {
+        return this.turbo;
+    }
+    public void setTurbo(int turbo) {
+        this.turbo = turbo;
     }
 
     @Override
@@ -26,8 +48,8 @@ public class Deportivo extends Coche{
             System.out.println("Mejor si arrancas para acelerar");
         }
         else{
-            setVelocidad(getVelocidad() + getVelocidadMaxima());
-            System.out.println(getVelocidad());
+            setVelocidad(getVelocidad() + acelerarDeportivo);
+            System.out.println("Acelerando!!, turbo " + getIsTurboActive() + " Velocidad:" + getVelocidad());
         }
      }
 
@@ -39,12 +61,28 @@ public class Deportivo extends Coche{
         this.setModelo("Testarosa");
         setArrancado(false);
         setSumaRestaVelocidad(50);
+        setIsTurboActive(false);
+        
     }
 
     //METODOS PROPIOS
      // Tendrá lo mismo que un Coche y además un método llamado turbo() que incrementará la velocidad en 40.
-     public void turbo(){
-        setVelocidad(getVelocidad() + turbo); 
+     public void turbo(boolean enableDisable){
+        if (enableDisable == true){
+            if (isTurboActive == false){
+                setAcelerarDeportivo(acelerarDeportivo + turbo);
+                setIsTurboActive(true);
+                setVelocidad(getVelocidad() + turbo);
+                System.out.println("Tuurbooo, Velocidad:" + getVelocidad());
+            }
+        }
+        if (enableDisable == false){
+            if(isTurboActive == true){
+                setIsTurboActive(false);
+                setAcelerarDeportivo(acelerarDeportivo - turbo);
+                System.out.println("Turbo OFF, Velocidad:" + getVelocidad());
+            }
+        }
      }
 
 }
