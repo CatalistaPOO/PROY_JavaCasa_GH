@@ -35,24 +35,30 @@ public class Mes {
 
 
     public double CalculaTMediaMensual(){
-        return this.tMaxima + this.tMinima / 2;
+        return (this.tMaxima + this.tMinima) / 2;
     }
 
     public int tRandom(){
-        int minimo;
-        int maximo;
-        if(getNombre() == "NOVIEMBRE"||"DICIEMBRE"||"ENERO"||"FEBRERO"){
-             minimo = - 10;
-             maximo = 10;
-
+        int minimoRandom;
+        int maximoRandom;
+        if(getNombre() == "NOVIEMBRE"||getNombre() =="DICIEMBRE"||getNombre() =="ENERO"||getNombre() =="FEBRERO"){
+             minimoRandom = - 10;
+             maximoRandom = 10;
         }
-else if(getNombre() == "NOVIEMBRE"||"DICIEMBRE"||"ENERO"||"FEBRERO"){
-             minimo = - 10;
-             maximo = 10;
-
+        else if(getNombre() == "MARZO"||getNombre() =="ABRIL"||getNombre() =="MAYO"||getNombre() =="JUNIO"){
+             minimoRandom = 8;
+             maximoRandom = 30;
+        }
+        else if (getNombre() == "JULIO"||getNombre() =="AGOSTO"||getNombre() =="SEPTIEMBRE"||getNombre() =="OCTUBRE"){
+             minimoRandom = 20;
+             maximoRandom = 42;
+        }
+        else{
+            minimoRandom = 10;
+             maximoRandom = 20;
         }
         // numeroAleatorio=(Math.random()∗(max−min+1))+min
-        double randomValue = Math.random()*(maximo-minimo + 1) + minimo;
+        double randomValue = Math.random()*(maximoRandom-minimoRandom + 1) + minimoRandom;
         return (int)randomValue;
     }
 
@@ -66,5 +72,4 @@ else if(getNombre() == "NOVIEMBRE"||"DICIEMBRE"||"ENERO"||"FEBRERO"){
                 "\n-------------------------------------------------------------" ;
         // return "Mes:" + this.nombre + "Temperatura Maxima:" + this.tMaxima + "Temperatura mínima:" + tMinima;
     }
-    
 }
