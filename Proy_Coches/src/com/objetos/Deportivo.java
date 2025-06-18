@@ -21,21 +21,21 @@ public class Deportivo extends Coche{
     public int getAcelerarDeportivo() {
         return acelerarDeportivo;
     }
-    public void setAcelerarDeportivo(int acelerarDeportivo) {
+    protected void setAcelerarDeportivo(int acelerarDeportivo) {
         this.acelerarDeportivo = acelerarDeportivo;
     }
 
      public boolean getIsTurboActive() {
         return this.isTurboActive;
     }
-    public void setIsTurboActive(boolean isTurboActive) {
+    protected void setIsTurboActive(boolean isTurboActive) {
         this.isTurboActive = isTurboActive;
     }
 
     public int getTurbo() {
         return this.turbo;
     }
-    public void setTurbo(int turbo) {
+    protected void setTurbo(int turbo) {
         this.turbo = turbo;
     }
 
