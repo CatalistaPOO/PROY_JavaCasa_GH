@@ -59,6 +59,7 @@ public class Conductor {
         deportivo.setMarca(marcaCoches.PORSCHE);
         deportivo.setModelo("Carrera");
         System.out.println(deportivo.toString());
+
         try {
             deportivo.acelerar();
         } catch (Exception e) {
