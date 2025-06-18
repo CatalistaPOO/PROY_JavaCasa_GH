@@ -17,7 +17,7 @@ public class Coche {
         setArrancado(false);
         setMarca(marcaCoches.SEAT);
         setModelo("León");
-        setSumaRestaVelocidad(10);
+        setSumaRestaVelocidad(20);
     }
 
 
@@ -102,14 +102,17 @@ public class Coche {
 
     public void acelerar()throws Exception{
         if ( this.arrancado == false) {
-                System.out.println("No has arrancado");
+                System.out.println("No has arrancado.Velocidad:" + getVelocidad());
             }
-            else if (velocidad > velocidadMaxima - sumaRestaVelocidad -1){
-            System.out.println("No pises tanto el acelerador que pasas la velocidad máxima del coche");
-        }
         else{
-            setVelocidad(getVelocidad() + sumaRestaVelocidad);
-            System.out.println("Velocidad: " + getVelocidad());
+             setVelocidad(getVelocidad() + sumaRestaVelocidad);
+             if (velocidad > velocidadMaxima){
+                 setVelocidad(velocidadMaxima);
+                 System.out.println("Velocidad MAXIMA!!! " + getVelocidad());
+             }
+             else{
+                 System.out.println("Velocidad: " + getVelocidad());
+             }
         }
     }
 
