@@ -31,9 +31,14 @@ public class Conductor {
         //-----------------------------------------------------------------------------------------------------
 
         // ACCIONES COCHE
+        System.out.println("-----------------------------------------");
         System.out.println("ACCIONES COCHE:");
-        Coche coche = new Coche(); 
+        System.out.println("-----------------------------------------");
+        Coche coche = new Coche();
+        coche.setMarca(marcaCoches.BMW); 
+        coche.setModelo("I3");
         System.out.println(coche.toString());
+
         try {
             coche.acelerar();
         } catch (Exception e) {
@@ -42,17 +47,22 @@ public class Conductor {
         coche.arrancar(true);
         coche.acelerar();
         coche.acelerar();
+        coche.frenar();
         coche.frenar(false);
-        System.out.println("-----------------------------------------");
+        coche.arrancar(false);
         
         // ACCIONES DEPORTIVO
+        System.out.println("-----------------------------------------");
         System.out.println("ACCIONES DEPORTIVO");
+        System.out.println("-----------------------------------------");
         Deportivo deportivo = new Deportivo();
+        deportivo.setMarca(marcaCoches.PORSCHE);
+        deportivo.setModelo("Carrera");
         System.out.println(deportivo.toString());
         try {
             deportivo.acelerar();
         } catch (Exception e) {
-            System.out.println("ERROR:Arranca el coche o no acelerarás");
+            System.out.println("ERROR:La aceleración no se ha producido");
         }
         deportivo.arrancar(true);
         deportivo.acelerar();
@@ -60,7 +70,9 @@ public class Conductor {
         deportivo.acelerar();
         deportivo.turbo(false);
         deportivo.acelerar();
+        deportivo.frenar();
         deportivo.frenar(true);
+        deportivo.arrancar(false);
         System.out.println("-----------------------------------------");
     }
 }

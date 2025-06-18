@@ -4,7 +4,7 @@ public class Deportivo extends Coche{
 
     //ATRIBUTOS
     private int velocidadMaximaDeportivo = 350;
-    private int acelerarDeportivo = getSumaRestaVelocidad() + 40; 
+    private int acelerarDeportivo = 50; 
     private int turbo = 40;
     private boolean isTurboActive;
 
@@ -41,17 +41,20 @@ public class Deportivo extends Coche{
 
     @Override
      public void acelerar() throws Exception{
-        if (getVelocidad() == velocidadMaximaDeportivo - (acelerarDeportivo -1)){
-            System.out.println("No puedes sobrepasar la velocidad máxima");
-        }
-        else if(getArrancado() == false){
-            System.out.println("Mejor si arrancas para acelerar");
+        if(getArrancado() == false){
+             System.out.println("Mejor si arrancas para acelerar");
         }
         else{
             setVelocidad(getVelocidad() + acelerarDeportivo);
-            System.out.println("Acelerando!!, turbo " + getIsTurboActive() + " Velocidad:" + getVelocidad());
+            if (getVelocidad() > getVelocidadMaxima()){
+                setVelocidad(velocidadMaximaDeportivo);
+                System.out.println("Velocidad MAXIMA!!! " + getVelocidad());
+            }
+            else{
+                System.out.println("Velocidad: " + getVelocidad());
+            }
         }
-     }
+    }
 
     // CONSTRUCTORES
     public Deportivo(){

@@ -9,6 +9,7 @@ public class Coche {
     private marcaCoches marca;
     private boolean arrancado;
     private int sumaRestaVelocidad;
+    private int freno = 10;
 
     //CONSTRUCTOR
     public Coche(){
@@ -25,14 +26,14 @@ public class Coche {
     public marcaCoches getMarca() {
         return this.marca;
     }
-    protected void setMarca(marcaCoches marca) {
+    public void setMarca(marcaCoches marca) {
         this.marca = marca;
     }
 
     public String getModelo() {
         return this.modelo;
     }
-    protected void setModelo(String modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
@@ -80,10 +81,10 @@ public class Coche {
     }
 
     public void frenar(){
-        if (arrancado == true || velocidad == 0){
-            int freno = velocidad - sumaRestaVelocidad;
-            this.velocidad -= freno;
-            System.out.println("Velocidad:" + this.velocidad);
+        if (arrancado == true || getVelocidad() != 0){
+            setVelocidad(getVelocidad() - freno);
+            System.out.println("Frenando, velocidad:" + getVelocidad());
+            
         }
         else{
             System.out.println("no frenarás con el coche parado o sin arrancar");
@@ -91,12 +92,16 @@ public class Coche {
     }
     
     public void frenar(boolean para){
-        if (velocidad > sumaRestaVelocidad){
-        setVelocidad(0);
-        System.out.println("Parada en seco!! tu velocidad es:" + getVelocidad());
+        if (getVelocidad() > getSumaRestaVelocidad()){
+            if(getVelocidad() > 80){
+                System.out.println( "GAME OVER para tí, demasiada velocidad, ni con airbag...");
+            }
+            setVelocidad(0);
+            System.out.println("Parada en seco!! tu velocidad es:" + getVelocidad());
         }
         else{
-            System.out.println("no frenarás con el coche parado...");
+            setVelocidad(0);
+            System.out.println("Estás parado..." + getVelocidad());
         }
     }
 
