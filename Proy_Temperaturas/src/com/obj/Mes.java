@@ -41,9 +41,14 @@ public class Mes {
     public int tRandom(){
         int minimo;
         int maximo;
-        if(getNombre() == NOVIEMBRE,DICIEMBRE,ENERO,FEBRERO){
-             minimo = - 70;
-             maximo = 70;
+        if(getNombre() == "NOVIEMBRE"||"DICIEMBRE"||"ENERO"||"FEBRERO"){
+             minimo = - 10;
+             maximo = 10;
+
+        }
+else if(getNombre() == "NOVIEMBRE"||"DICIEMBRE"||"ENERO"||"FEBRERO"){
+             minimo = - 10;
+             maximo = 10;
 
         }
         // numeroAleatorio=(Math.random()∗(max−min+1))+min
