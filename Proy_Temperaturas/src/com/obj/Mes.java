@@ -64,12 +64,12 @@ public class Mes {
 
     @Override
     public String toString(){
-        return "-------------------------------------------------------------" + 
+        return "-------------------------" + 
                 "\nMes: " + getNombre() +
                 "\nTemperatura MAXIMA: " + getTMaxima() +
                 "\nTemperatura MINIMA: " + getTMinima() +
                 "\nTemperatura media:" + CalculaTMediaMensual() + "Cº" + 
-                "\n-------------------------------------------------------------" ;
+                "\n-------------------------" ;
         // return "Mes:" + this.nombre + "Temperatura Maxima:" + this.tMaxima + "Temperatura mínima:" + tMinima;
     }
 }
